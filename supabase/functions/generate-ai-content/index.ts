@@ -13,23 +13,26 @@ const corsHeaders = {
 // Context-specific system prompts
 // ---------------------------------------------------------------------------
 
+const brandName = Deno.env.get("BRAND_NAME") || "CLIENT SERVICES"
+const brandActivity = Deno.env.get("BRAND_ACTIVITY") || "entreprise de services"
+
 const contextPrompts: Record<string, string> = {
   newsletter_subject:
-    "Tu generes des objets d'email accrocheurs pour des newsletters d'une ${Deno.env.get("BRAND_ACTIVITY") || "entreprise de services"} (${Deno.env.get("BRAND_NAME") || "CLIENT SERVICES"}). L'objet doit faire entre 30 et 60 caracteres, etre percutant et donner envie d'ouvrir l'email. Reponds avec l'objet uniquement, sans guillemets.",
+    `Tu generes des objets d'email accrocheurs pour des newsletters d'une ${brandActivity} (${brandName}). L'objet doit faire entre 30 et 60 caracteres, etre percutant et donner envie d'ouvrir l'email. Reponds avec l'objet uniquement, sans guillemets.`,
   newsletter_intro:
-    "Tu rediges des introductions de newsletter pour ${Deno.env.get("BRAND_NAME") || "CLIENT SERVICES"}, ${Deno.env.get("BRAND_ACTIVITY") || "entreprise de services"}. Le texte doit etre accueillant, concis (2-3 phrases max) et donner le contexte de la newsletter.",
+    `Tu rediges des introductions de newsletter pour ${brandName}, ${brandActivity}. Le texte doit etre accueillant, concis (2-3 phrases max) et donner le contexte de la newsletter.`,
   newsletter_body:
-    "Tu rediges le contenu principal de newsletters pour ${Deno.env.get("BRAND_NAME") || "CLIENT SERVICES"}. Le texte doit etre informatif, engageant et adapte au format email. Utilise des paragraphes courts.",
+    `Tu rediges le contenu principal de newsletters pour ${brandName}. Le texte doit etre informatif, engageant et adapte au format email. Utilise des paragraphes courts.`,
   newsletter_cta:
     "Tu generes des textes courts pour des boutons d'appel a l'action dans des newsletters (ex: 'Decouvrir nos offres', 'Prendre rendez-vous'). Maximum 5 mots. Reponds avec le texte du bouton uniquement.",
   newsletter_section:
-    "Tu rediges des sections d'articles pour des newsletters d'actualites d'une ${Deno.env.get("BRAND_ACTIVITY") || "entreprise de services"}. Chaque section doit etre informative et concise (1-2 paragraphes).",
+    `Tu rediges des sections d'articles pour des newsletters d'actualites d'une ${brandActivity}. Chaque section doit etre informative et concise (1-2 paragraphes).`,
   quote_description:
     "Tu rediges des descriptions professionnelles de prestations de petits travaux de jardinage pour des devis. Sois precis, technique et professionnel. Decris clairement la prestation, les materiaux ou techniques utilises, sans superflu. Une a trois phrases maximum.",
   quote_conditions:
     "Tu rediges des conditions particulieres pour des devis de petits travaux de jardinage. Inclus les mentions pertinentes : delais d'execution, conditions d'acces au chantier, gestion des dechets verts. Si les travaux sont eligibles au credit d'impot (article 199 sexdecies du CGI), mentionne-le.",
   freeform:
-    "Tu es un assistant d'ecriture professionnel pour ${Deno.env.get("BRAND_NAME") || "CLIENT SERVICES"}, ${Deno.env.get("BRAND_ACTIVITY") || "entreprise de services"} et entretien de jardins. Adapte ton style au contexte demande.",
+    `Tu es un assistant d'ecriture professionnel pour ${brandName}, ${brandActivity} et entretien de jardins. Adapte ton style au contexte demande.`,
 }
 
 const actionInstructions: Record<string, string> = {
