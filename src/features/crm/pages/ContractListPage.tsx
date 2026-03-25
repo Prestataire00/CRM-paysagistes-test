@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router'
 import { FileText, Search, Download, AlertTriangle, CheckCircle2, XCircle, Pencil } from 'lucide-react'
 import { PageHeader } from '../../../components/layout/PageHeader'
 import { Skeleton } from '../../../components/ui/Skeleton'
-import { useQuery, useQueryClient } from '@tanstack/react-query'
+import { useQuery } from '@tanstack/react-query'
 import { supabase } from '../../../lib/supabase'
 import { exportToExcel } from '../../../utils/excel'
 

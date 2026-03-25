@@ -57,7 +57,7 @@ export function AvailabilityCharts({ teams, absences, vehicles, equipment, curre
             <YAxis hide />
             <Tooltip
               contentStyle={{ fontSize: 11, padding: '4px 8px' }}
-              formatter={(value: number | undefined) => [`${value ?? 0} pers.`, 'Disponibles']}
+              formatter={(value) => [`${Number(value ?? 0)} pers.`, 'Disponibles']}
             />
             <Bar dataKey="disponibles" fill="#22c55e" radius={[3, 3, 0, 0]} />
           </BarChart>
